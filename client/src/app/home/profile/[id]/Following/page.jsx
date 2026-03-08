@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { CircularProgress } from '@mui/material';
 
-function page({params}) {
+function Page({params}) {
     const [Following, setFollowing] = useState([]);
     const [hasMore, sethasMore] = useState(true);
     const [loading, setloading] = useState(true);
@@ -34,6 +34,7 @@ function page({params}) {
     }
     useEffect(() => {
         fetchUserFollowing()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     if(loading){
         return <div className="w-full h-screen flex justify-center items-center">
@@ -48,7 +49,7 @@ function page({params}) {
             hasMore={hasMore}>
                 {
                     Following.map((e)=>{
-                        return <Account Username={e.Username} id={e._id} Usertag={e.Usertag} image={e.Image} />
+                        return <Account key={e._id} Username={e.Username} id={e._id} Usertag={e.Usertag} image={e.Image} />
                     })
                 }
         </InfiniteScroll>
@@ -56,4 +57,4 @@ function page({params}) {
   )
 }
 
-export default page
+export default Page
