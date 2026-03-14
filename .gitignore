@@ -1,0 +1,8 @@
+server/.env
+client/.env
+client/todo.txt
+client/node_modules/
+server/node_modules/
+client/.next/
+client/.next/cache/webpack/client-development/3.pack.gz
+server/.env
