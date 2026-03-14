@@ -12,6 +12,11 @@ app.use(compression())
 app.use(helmet())
 app.use('/api/post',require("./routes/POST"))
 app.use('/api/get',require("./routes/GET"))
-app.listen(5000,()=>{
-    console.log("server is up and running")
+
+// Use PORT from environment variable, fallback to 5000
+const PORT = process.env.PORT || 5000;
+const HOST = '0.0.0.0'; // Listen on all interfaces (required for Docker/ECS)
+
+app.listen(PORT, HOST, ()=>{
+    console.log(`Server is up and running on ${HOST}:${PORT}`)
 })
